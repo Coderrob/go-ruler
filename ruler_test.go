@@ -11,7 +11,7 @@ func TestRules(t *testing.T) {
 	}{
 		{
 			[]*Rule{
-				&Rule{
+				{
 					"eq",
 					"basic.property",
 					"foobar",
@@ -27,7 +27,7 @@ func TestRules(t *testing.T) {
 		},
 		{
 			[]*Rule{
-				&Rule{
+				{
 					"eq",
 					"basic.property",
 					12,
@@ -42,7 +42,7 @@ func TestRules(t *testing.T) {
 		},
 		{
 			[]*Rule{
-				&Rule{
+				{
 					"gt",
 					"basic.property",
 					45,
@@ -57,7 +57,7 @@ func TestRules(t *testing.T) {
 		},
 		{
 			[]*Rule{
-				&Rule{
+				{
 					"gte",
 					"basic.property",
 					100,
@@ -72,7 +72,7 @@ func TestRules(t *testing.T) {
 		},
 		{
 			[]*Rule{
-				&Rule{
+				{
 					"lt",
 					"basic.property",
 					45,
@@ -87,7 +87,7 @@ func TestRules(t *testing.T) {
 		},
 		{
 			[]*Rule{
-				&Rule{
+				{
 					"lte",
 					"basic.property",
 					45,
@@ -103,7 +103,7 @@ func TestRules(t *testing.T) {
 
 		{
 			[]*Rule{
-				&Rule{
+				{
 					"regex",
 					"basic.property",
 					"a[0-9]*b",
@@ -124,7 +124,7 @@ func TestRules(t *testing.T) {
 		}
 
 		if !r.Test(c.o) {
-			t.Errorf("rule test failed! %s\n rules: %s",
+			t.Errorf("rule test failed! %s\n rules: %v",
 				c.name,
 				c.rules,
 			)
@@ -324,7 +324,7 @@ func BenchmarkNewRulerWithJson(b *testing.B) {
 
 func BenchmarkNewRulerWithRulesSimple(b *testing.B) {
 	filters := []*Rule{
-		&Rule{
+		{
 			Comparator: "eq",
 			Path:       "name",
 			Value:      "Bob",
@@ -346,52 +346,52 @@ func BenchmarkNewRulerWithRulesSimple(b *testing.B) {
 
 func BenchmarkNewRulerWithRulesTen(b *testing.B) {
 	filters := []*Rule{
-		&Rule{
+		{
 			Comparator: "eq",
 			Path:       "name",
 			Value:      "Bob",
 		},
-		&Rule{
+		{
 			Comparator: "ncontains",
 			Path:       "name",
 			Value:      "Jones",
 		},
-		&Rule{
+		{
 			Comparator: "contains",
 			Path:       "location.name",
 			Value:      "Florida",
 		},
-		&Rule{
+		{
 			Comparator: "gte",
 			Path:       "location.x",
 			Value:      45.63,
 		},
-		&Rule{
+		{
 			Comparator: "lte",
 			Path:       "location.y",
 			Value:      35.10,
 		},
-		&Rule{
+		{
 			Comparator: "gt",
 			Path:       "location.pop",
 			Value:      100000,
 		},
-		&Rule{
+		{
 			Comparator: "lt",
 			Path:       "location.elev",
 			Value:      1000,
 		},
-		&Rule{
+		{
 			Comparator: "eq",
 			Path:       "location.extra.fips",
 			Value:      "12-24000",
 		},
-		&Rule{
+		{
 			Comparator: "eq",
 			Path:       "location.extra.time.zone",
 			Value:      "America/New_York",
 		},
-		&Rule{
+		{
 			Comparator: "eq",
 			Path:       "location.extra.time.speed.you-made-it-this-far.reward",
 			Value:      "you",
